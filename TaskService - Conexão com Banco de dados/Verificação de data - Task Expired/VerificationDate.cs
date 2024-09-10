@@ -64,7 +64,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.Verificação_de_data___Task
             catch (Exception ex)
             {
                 // Tratamento de exceção (pode ser ajustado conforme necessário)
-                Console.WriteLine("Ocorreu um erro durante a verificação de tarefas expiradas: " + ex.Message);
+                Console.WriteLine("Ocorreu um erro durante a verificação de tarefas expiradas. Verifique sua conexão com o banco de dados. \nErro: " + ex.Message);
             }
         }
     }
