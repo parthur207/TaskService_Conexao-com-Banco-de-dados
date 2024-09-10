@@ -15,6 +15,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
         {
             Nome_Task = nome_task;
             string ConnectionString = Connect_db.GetConnectionString();
+
             try
             {
                 using (var conexao = new MySqlConnection(ConnectionString))
@@ -50,16 +51,18 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
 
         public void QueryData_Full()
         {
+          
             try
             {
                 string ConnectionString = Connect_db.GetConnectionString();
                 using (var conexao = new MySqlConnection(ConnectionString))
                 {
-                    string comando_query_string = @"SELECT * FROM All_Task;";
+                    string comando_query_string = @"SELECT  *FROM All_Task;";
+
                     using (var comando_query_all = new MySqlCommand(comando_query_string, conexao))
                     {
-                        conexao.Open();  // Abre a conexão antes de executar qualquer comando
-                        
+                        conexao.Open();
+
                         using (MySqlDataReader Reader = comando_query_all.ExecuteReader())
                         {
                             if (Reader.HasRows)
@@ -67,7 +70,8 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
                                 Console.WriteLine("\nTodas as tarefas:");
                                 while (Reader.Read())
                                 {
-                                    Console.WriteLine($"\nId: {Reader["Id"]} - Nome da tarefa: {Reader["Nome_Task"]} - Descrição da tarefa: {Reader["Descricao_Task"]} - Data de vencimento: {Reader["Data_Task"]} - Prioridade da tarefa: {Reader["Prioridade_Task"]} - Status da tarefa: {Reader["Status_Task"]}");
+                                   
+                                    Console.WriteLine($"\nId: {Reader.GetInt32("Id")} - Nome da tarefa: {Reader.GetString("Nome_Task")} - Descrição da tarefa: {Reader.GetString("Descricao_Task")} - Data de vencimento: {Reader.GetDateTime("Data_Task"):dd/MM/yyyy} - Prioridade da tarefa: {Reader.GetString("Prioridade_Task")} - Status da tarefa: {Reader.GetString("Status_Task")}");
                                 }
                             }
                             else
@@ -83,8 +87,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
                 Console.WriteLine($"\nOcorreu um erro inesperado:\n{ex.Message}");
             }
         }
-
-        public void QueryTask_Pendence()
+            public void QueryTask_Pendence()
         {
             string ConnectionString = Connect_db.GetConnectionString();
             try

@@ -17,8 +17,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
             bool aux_query = true;
             bool op_qr = true;
 
-            while (op_qr)
-            {
+          
                 while (aux_query)
                 {
                     Console.WriteLine("\nSelecione uma opção:");
@@ -81,10 +80,9 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                         break;
 
                     case 9:
-                        op_qr = false;
                         break;
                 }
             }
         }
     }
-}
+

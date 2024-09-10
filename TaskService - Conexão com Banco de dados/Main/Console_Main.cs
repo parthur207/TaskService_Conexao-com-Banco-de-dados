@@ -33,6 +33,8 @@ namespace TaskService___Conexão_com_Banco_de_dados.Main
             bool bool_main = true;
             while (bool_main)
             {
+
+                
                 VerificationDate.VerificationDate_Expired(aux_date);
 
                 Console.WriteLine("Task Service\n");

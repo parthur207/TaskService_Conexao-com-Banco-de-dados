@@ -20,17 +20,17 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
                 using (var conexao = new MySqlConnection(cnn_dl_tall_string))
                 {
                     conexao.Open();
-                    string Comando_Delete_All = @"DELETE * FROM All_Task;";
+                    string Comando_Delete_All = @"DELETE FROM All_Task;";
                     var cmd_delete = new MySqlCommand(Comando_Delete_All, conexao);
 
                     int linhasafetadas = cmd_delete.ExecuteNonQuery();
                     if (linhasafetadas > 0)
                     {
-                        Console.WriteLine("\nExclusão realizada com sucesso.");
+                        Console.WriteLine("\nTodos os dados foram excluídos.");
                     }
                     else
                     {
-                        Console.WriteLine("\nOcorreu um erro na tentativa de exclusão do banco de dados.");
+                        Console.WriteLine("\nOcorreu um erro na tentativa de exclusão do banco de dados. Certifique-se se o banco está vazio.");
                     }
                 }
             }
