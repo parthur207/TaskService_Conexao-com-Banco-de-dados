@@ -29,8 +29,8 @@ namespace TaskService___Conexão_com_Banco_de_dados.DataBase
                 catch (Exception ex)
                 {
                     Console.WriteLine($"\nErro ao se conectar ao banco. Erro: {ex.ToString()}");
-                  
-                }  return;
+                  return;
+                }  
             }
         }
     }
