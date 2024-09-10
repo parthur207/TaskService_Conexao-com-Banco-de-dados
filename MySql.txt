@@ -1,0 +1,17 @@
+CREATE DATABASE Task;
+
+USE Task;
+
+CREATE TABLE all_tasks (
+    Id INT AUTO_INCREMENT NOT NULL,
+    Nome_Task VARCHAR(50) NOT NULL,
+    Data_Task DATE,
+    Descricao_Task VARCHAR(255) NOT NULL,
+    Prioridade_Task VARCHAR(20),
+    Status_Task VARCHAR(20),
+    PRIMARY KEY (Id)
+);
+
+Describe All_task;
+
+SELECT * FROM All_Task;
