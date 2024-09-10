@@ -5,13 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_dos_dados;
 using MySql.Data.MySqlClient;
+using TaskService___Conexão_com_Banco_de_dados.Main;
 
 namespace TaskService___Conexão_com_Banco_de_dados.DataBase
 {
     public class Connect_db : InsertData_s
     {
-        protected const string ConnectString = @"Server=127.0.0.1;Port=3306;Database=Task;User ID=root;Password=Admin;";
+        public bool validacao_conexao = true;
 
+        protected const string ConnectString = @"Server=127.0.0.1;Port=3306;Database=Task;User ID=root;Password=Admin;";
+       
         public static string GetConnectionString() //Vinculado a "ConnectString" - Tipagem: (Protect) - Com isso será possível o acesso aos valores contidos ao "Path" do DB. 
         {
             return ConnectString;
@@ -28,8 +31,9 @@ namespace TaskService___Conexão_com_Banco_de_dados.DataBase
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Erro ao se conectar ao banco. Erro: {ex.ToString()}");
-                }
+                   validacao_conexao &= false;
+                    Console.WriteLine($"\nErro ao se conectar ao banco. Erro: {ex.ToString()}");
+                }  
             }
         }
     }

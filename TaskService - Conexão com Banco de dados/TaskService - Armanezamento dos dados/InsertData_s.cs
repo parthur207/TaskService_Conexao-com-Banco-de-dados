@@ -76,18 +76,31 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                         Console.WriteLine("\nDado inválido. Insira uma das três prioridades a seguir: (ALTA | MEDIA | BAIXA)");
                     }
                 }//Validação da prioridade da tarefa
-
-                Console.WriteLine("\nDeseja efetuar a inserção de uma nova tarefa? (Sim || Não):");
-                opcao = Console.ReadLine().ToLower();
-                if (opcao == "sim")
+                bool inserir_novamente = true;
+                while (inserir_novamente)
                 {
-                    validacao1 = true;
-                    validacao2 = true;
+                    Console.WriteLine("\nDeseja efetuar a inserção de uma nova tarefa? (Sim || Não):");
+                    opcao = Console.ReadLine().ToLower();
+                    if (opcao == "sim")
+                    {
+                        validacao1 = true;
+                        validacao2 = true;
+                        inserir_novamente = false;
+                        break;
+                    }
+                    else if (opcao!="sim" && opcao!="não" && opcao != "nao") 
+                    {
+                        Console.WriteLine("\nDigite uma opção válida.");
+                        inserir_novamente=true;
+                    }
+                    else if(opcao=="nao" || opcao=="não"){
+                        inserir_novamente = false;
+                        break;
+                    }
                 }
-
                 aux_ins.InsertData(nome_task, descricao_task, data_task, prioridade_task, status_task);
             }
-            while (opcao == "sim");
+            while (opcao == "sim" && opcao!="nao" && opcao!="não");
         }
     }
 }
