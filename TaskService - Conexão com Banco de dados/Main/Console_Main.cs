@@ -5,6 +5,7 @@ using TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos_com
 using TaskService___Conexão_com_Banco_de_dados.Verificação_de_data___Task_Expired;
 using System;
 using TaskService___Conexão_com_Banco_de_dados.DataBase;
+using System.Security.Cryptography.X509Certificates;
 
 namespace TaskService___Conexão_com_Banco_de_dados.Main
 {
@@ -12,6 +13,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.Main
     {
         public static void Main(string[] args)
         {
+            
             #region Instanciação de objetos
             Connect_db auxiliador_cnn = new Connect_db();
 
@@ -30,8 +32,8 @@ namespace TaskService___Conexão_com_Banco_de_dados.Main
             UpdateData_exe aux_Up_exe = new UpdateData_exe();
             #endregion
 
-            bool bool_main = true;
-            while (bool_main)
+            
+            while (auxiliador_cnn.validacao_conexao)
             {
                 VerificationDate.VerificationDate_Expired(aux_date);
 
@@ -51,49 +53,50 @@ namespace TaskService___Conexão_com_Banco_de_dados.Main
                 {
                     auxiliador_cnn.Conexao();
                 }
+                while (auxiliador_cnn.validacao_conexao) {
+                    switch (op)
+                    {
+                        case 1:
+                            auxiliador_ins.Storage_InsertData(aux_Ins_exe);
+                            break;
 
-                switch (op)
-                {
-                    case 1:
-                        auxiliador_ins.Storage_InsertData(aux_Ins_exe);
-                        break;
-
-                    case 2:
-                        Console.WriteLine("\n1. Remover linha, ou dado específico.\n2. Apagar todos os dados no diretório.");
-                        if (!int.TryParse(Console.ReadLine(), out int op_delete) || op_delete < 1 || op_delete > 2)
-                        {
-                            Console.WriteLine("É necessário digitar um numero, sendo 1 ou 2.\n");
-                        }
-                        else
-                        {
-                            if (op_delete == 1)
+                        case 2:
+                            Console.WriteLine("\n1. Remover linha, ou dado específico.\n2. Apagar todos os dados no diretório.");
+                            if (!int.TryParse(Console.ReadLine(), out int op_delete) || op_delete < 1 || op_delete > 2)
                             {
-                                auxiliador_dlt.Storage_DeleteData(aux_dlt_exe);
+                                Console.WriteLine("É necessário digitar um numero, sendo 1 ou 2.\n");
                             }
-                            else if (op_delete == 2)
+                            else
                             {
-                                auxiliador_dlt_all.Storage_DeleteAll(aux_DltAll_exe);
+                                if (op_delete == 1)
+                                {
+                                    auxiliador_dlt.Storage_DeleteData(aux_dlt_exe);
+                                }
+                                else if (op_delete == 2)
+                                {
+                                    auxiliador_dlt_all.Storage_DeleteAll(aux_DltAll_exe);
+                                }
                             }
-                        }
-                        break;
+                            break;
 
-                    case 3:
-                        auxiliador_up.Storage_UpdateData(aux_Up_exe);
-                        break;
+                        case 3:
+                            auxiliador_up.Storage_UpdateData(aux_Up_exe);
+                            break;
 
-                    case 4:
-                        auxiliador_qr.Storage_QueryData(aux_Qr_exe);
-                        break;
+                        case 4:
+                            auxiliador_qr.Storage_QueryData(aux_Qr_exe);
+                            break;
 
-                    case 5:
-                        Console.WriteLine("\nPrograma Encerrado.");
-                        string ConnectionString_main = GetConnectionString();
-                        using (var close_db = new MySqlConnection(ConnectionString_main))
-                        {
-                            close_db.Close();//interrompe a conexão com o banco
-                        }
-                        return;
+                        case 5:
+                            Console.WriteLine("\nPrograma Encerrado.");
+                            string ConnectionString_main = GetConnectionString();
+                            using (var close_db = new MySqlConnection(ConnectionString_main))
+                            {
+                                close_db.Close();//interrompe a conexão com o banco
+                            }
+                            return;
 
+                    }
                 }
             }
         }
