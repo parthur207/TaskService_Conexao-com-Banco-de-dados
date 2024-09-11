@@ -18,12 +18,12 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
             string formato = "dd/MM/yyyy";
             while (aux)
             {
-                Console.WriteLine("Selecione uma opção:\n");
-                Console.WriteLine("1 - Alterar o nome de uma tarefa.\n");
+                Console.WriteLine("\nSelecione uma opção:\n");
+                Console.WriteLine("1 - Alterar o nome de uma tarefa.");
                 Console.WriteLine("2 - Alterar a descrição de uma tarefa.\n");
-                Console.WriteLine("3 - Alterar a data de vencimento de uma tarefa.\n");
-                Console.WriteLine("4 - Alterar a prioridade da tarefa.\n");
-                Console.WriteLine("5 - Alterar o status de uma tarefa.\n");
+                Console.WriteLine("3 - Alterar a data de vencimento de uma tarefa.");
+                Console.WriteLine("4 - Alterar a prioridade da tarefa.");
+                Console.WriteLine("5 - Alterar o status de uma tarefa.");
                 Console.WriteLine("6 - Voltar ao menu principal.");
 
                 while (!int.TryParse(Console.ReadLine(), out op_up) || op_up < 1 || op_up > 6)
@@ -138,6 +138,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
 
                     case 6:
                         aux = false;
+                        return;
                         break;
 
                 }

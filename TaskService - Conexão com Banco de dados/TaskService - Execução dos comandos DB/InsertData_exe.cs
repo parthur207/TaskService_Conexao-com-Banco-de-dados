@@ -40,7 +40,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
 
                     if (LinhasAfetadas > 0)
                     {
-                        Console.WriteLine("\nDados inseridos com sucesso.\n");
+                        Console.WriteLine("\nDados inseridos com sucesso.");
                     }
                     else
                     {

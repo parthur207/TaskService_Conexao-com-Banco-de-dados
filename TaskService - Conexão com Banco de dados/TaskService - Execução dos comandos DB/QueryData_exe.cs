@@ -32,7 +32,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
                             {
                                 while (Reader.Read())
                                 {
-                                    Console.WriteLine($"\nId: {Reader["Id"]} - Nome da tarefa: {Reader["Nome_Task"]} - Descrição da tarefa: {Reader["Descricao_Task"]} - Data de vencimento: {Reader["Data_Task"]} - Prioridade da tarefa: {Reader["Prioridade_Task"]} - Status da tarefa: {Reader["Status_Task"]}");
+                                    Console.WriteLine($"\nNome da tarefa: {Reader["Nome_Task"]} - Descrição da tarefa: {Reader["Descricao_Task"]} - Data de vencimento: {Reader["Data_Task"]} - Prioridade da tarefa: {Reader["Prioridade_Task"]} - Status da tarefa: {Reader["Status_Task"]}");
                                 }
                             }
                             else
@@ -71,7 +71,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
                                 while (Reader.Read())
                                 {
                                    
-                                    Console.WriteLine($"\nId: {Reader.GetInt32("Id")} - Nome da tarefa: {Reader.GetString("Nome_Task")} - Descrição da tarefa: {Reader.GetString("Descricao_Task")} - Data de vencimento: {Reader.GetDateTime("Data_Task"):dd/MM/yyyy} - Prioridade da tarefa: {Reader.GetString("Prioridade_Task")} - Status da tarefa: {Reader.GetString("Status_Task")}");
+                                    Console.WriteLine($"\nNome da tarefa: {Reader.GetString("Nome_Task")} - Descrição da tarefa: {Reader.GetString("Descricao_Task")} - Data de vencimento: {Reader.GetDateTime("Data_Task"):dd/MM/yyyy} - Prioridade da tarefa: {Reader.GetString("Prioridade_Task")} - Status da tarefa: {Reader.GetString("Status_Task")}");
                                 }
                             }
                             else
@@ -106,7 +106,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
                                 Console.WriteLine("\nTarefas pendentes:");
                                 while (Reader.Read())
                                 {
-                                    Console.WriteLine($"\nId: {Reader["Id"]} - Nome da tarefa: {Reader["Nome_Task"]} - Descrição da tarefa: {Reader["Descricao_Task"]} - Data de vencimento: {Reader["Data_Task"]} - Prioridade da tarefa: {Reader["Prioridade_Task"]} - Status da tarefa: {Reader["Status_Task"]}");
+                                    Console.WriteLine($"\nNome da tarefa: {Reader["Nome_Task"]} - Descrição da tarefa: {Reader["Descricao_Task"]} - Data de vencimento: {Reader["Data_Task"]} - Prioridade da tarefa: {Reader["Prioridade_Task"]} - Status da tarefa: {Reader["Status_Task"]}");
                                 }
                             }
                             else
@@ -132,18 +132,19 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
             {
                 using (var conexao = new MySqlConnection(ConnectionString))
                 {
-                    string comando_query_completed_string = @"SELECT * FROM All_Task WHERE Status_Task=Finalizada;";
+                    string comando_query_completed_string = @"SELECT * FROM All_Task WHERE Status_Task='Finalizada';";
                     using (var comando_query_completed = new MySqlCommand(comando_query_completed_string, conexao))
                     {
                         conexao.Open();
                         using (MySqlDataReader Reader = comando_query_completed.ExecuteReader())
                         {
-                            Console.WriteLine("\nTarefas finalizadas:");
+                            
                             if (Reader.HasRows)
                             {
+                                Console.WriteLine("\nTarefas finalizadas:");
                                 while (Reader.Read())
                                 {
-                                    Console.WriteLine($"\nId: {Reader["Id"]} - Nome da tarefa: {Reader["Nome_Task"]} - Descrição da tarefa: {Reader["Descricao_Task"]} - Data de vencimento: {Reader["Data_Task"]} - Prioridade da tarefa: {Reader["Prioridade_Task"]} - Status da tarefa: {Reader["Status_Task"]}");
+                                    Console.WriteLine($"\nNome da tarefa: {Reader["Nome_Task"]} - Descrição da tarefa: {Reader["Descricao_Task"]} - Data de vencimento: {Reader["Data_Task"]} - Prioridade da tarefa: {Reader["Prioridade_Task"]} - Status da tarefa: {Reader["Status_Task"]}");
                                 }
                             }
                             else
@@ -168,7 +169,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
             {
                 using (var conexao = new MySqlConnection(ConnectionString))
                 {
-                    string comando_query_expired_string = @"SELECT * FROM All_Task WHERE Status_Task=Expirada;";
+                    string comando_query_expired_string = @"SELECT * FROM All_Task WHERE Status_Task='Expirada';";
                     using (var comando_query_expired = new MySqlCommand(comando_query_expired_string, conexao))
                     {
                         conexao.Open();
@@ -180,7 +181,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
                                 Console.WriteLine("\nTarefas pendentes:");
                                 while (Reader.Read())
                                 {
-                                    Console.WriteLine($"\nId: {Reader["Id"]} - Nome da tarefa: {Reader["Nome_Task"]} - Descrição da tarefa: {Reader["Descricao_Task"]} - Data de vencimento: {Reader["Data_Task"]} - Prioridade da tarefa: {Reader["Prioridade_Task"]} - Status da tarefa: {Reader["Status_Task"]}");
+                                    Console.WriteLine($"\nNome da tarefa: {Reader["Nome_Task"]} - Descrição da tarefa: {Reader["Descricao_Task"]} - Data de vencimento: {Reader["Data_Task"]} - Prioridade da tarefa: {Reader["Prioridade_Task"]} - Status da tarefa: {Reader["Status_Task"]}");
                                 }
                             }
                             else
@@ -205,18 +206,19 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
             {
                 using (var conexao = new MySqlConnection(ConnectionString))
                 {
-                    string comando_query_high_string = @"SELECT * FROM All_Task WHERE Prioridade_Task=ALTA;";
+                    string comando_query_high_string = @"SELECT * FROM All_Task WHERE Prioridade_Task='ALTA';";
                     using (var comando_query_High = new MySqlCommand(comando_query_high_string, conexao))
                     {
                         conexao.Open();
                         using (MySqlDataReader Reader = comando_query_High.ExecuteReader())
                         {
-                            Console.WriteLine("\nTarefas de 'ALTA' prioridade:");
+                            
                             if (Reader.HasRows)
                             {
+                                Console.WriteLine("\nTarefas de 'ALTA' prioridade:");
                                 while (Reader.Read())
                                 {
-                                    Console.WriteLine($"\nId: {Reader["Id"]} - Nome da tarefa: {Reader["Nome_Task"]} - Descrição da tarefa: {Reader["Descricao_Task"]} - Data de vencimento: {Reader["Data_Task"]} - Prioridade da tarefa: {Reader["Prioridade_Task"]} - Status da tarefa: {Reader["Status_Task"]}");
+                                    Console.WriteLine($"\nNome da tarefa: {Reader["Nome_Task"]} - Descrição da tarefa: {Reader["Descricao_Task"]} - Data de vencimento: {Reader["Data_Task"]} - Prioridade da tarefa: {Reader["Prioridade_Task"]} - Status da tarefa: {Reader["Status_Task"]}");
                                 }
                             }
                             else
@@ -243,18 +245,19 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
             {
                 using (var conexao = new MySqlConnection(ConnectionString))
                 {
-                    string comando_query_average_string = @"SELECT Prioridade_Task FROM All_Task WHERE Prioridade_Task=MEDIA;";
+                    string comando_query_average_string = @"SELECT * FROM All_Task WHERE Prioridade_Task='MEDIA';";
                     using (var comando_query_Average = new MySqlCommand(comando_query_average_string, conexao))
                     {
                         conexao.Open();
                         using (MySqlDataReader Reader = comando_query_Average.ExecuteReader())
                         {
-                            Console.WriteLine("\nTarefas de 'MEDIA' prioridade:");
+                            
                             if (Reader.HasRows)
                             {
+                                Console.WriteLine("\nTarefas de 'MEDIA' prioridade:");
                                 while (Reader.Read())
                                 {
-                                    Console.WriteLine($"\nId {Reader["Id"]} - Nome da tarefa: {Reader["Nome_Task"]} - Descrição da tarefa: {Reader["Descricao_Task"]} - Data de vencimento: {Reader["Data_Task"]} - Prioridade da tarefa: {Reader["Prioridade_Task"]} - Status da tarefa: {Reader["Status_Task"]}");
+                                    Console.WriteLine($"\nNome da tarefa: {Reader["Nome_Task"]} - Descrição da tarefa: {Reader["Descricao_Task"]} - Data de vencimento: {Reader["Data_Task"]} - Prioridade da tarefa: {Reader["Prioridade_Task"]} - Status da tarefa: {Reader["Status_Task"]}");
                                 }
                             }
                             else
@@ -278,20 +281,18 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
             {
                 using (var conexao = new MySqlConnection(ConnectionString))
                 {
-                    string comando_query_low_string = @"SELECT Prioridade_Task FROM All_Task WHERE Prioridade_Task=BAIXA;";
+                    string comando_query_low_string = @"SELECT * FROM All_Task WHERE Prioridade_Task='BAIXA';";
                     using (var comando_query_Low = new MySqlCommand(comando_query_low_string, conexao))
                     {
-
+                        conexao.Open();
                         using (MySqlDataReader Reader = comando_query_Low.ExecuteReader())
                         {
-                            Console.WriteLine("\nTarefas de 'BAIXA' prioridade:");
-
-                            conexao.Open();
                             if (Reader.HasRows)
                             {
+                                Console.WriteLine("\nTarefas de 'BAIXA' prioridade:");
                                 while (Reader.Read())
                                 {
-                                    Console.WriteLine($"\nId {Reader["Id"]} - Nome da tarefa: {Reader["Nome_Task"]} - Descrição da tarefa: {Reader["Descricao_Task"]} - Data de vencimento: {Reader["Data_Task"]} - Prioridade da tarefa: {Reader["Prioridade_Task"]} - Status da tarefa: {Reader["Status_Task"]}");
+                                    Console.WriteLine($"\nNome da tarefa: {Reader["Nome_Task"]} - Descrição da tarefa: {Reader["Descricao_Task"]} - Data de vencimento: {Reader["Data_Task"]} - Prioridade da tarefa: {Reader["Prioridade_Task"]} - Status da tarefa: {Reader["Status_Task"]}");
                                 }
                             }
                             else

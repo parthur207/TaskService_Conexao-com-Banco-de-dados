@@ -16,6 +16,9 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
             string nome_task, descricao_task;
             bool validacao1 = true;
             bool validacao2 = true;
+            bool validacao3 = true;
+            bool validacao4 = true;
+            bool ins_again = true;
             string opcao = "sim";
 
             Status_Type status_task = Status_Type.Pendente;//Uma nova Tarefa sempre será introduzida como "Pendente" e seu status poderá ser modificado mediante a ação do usuário
@@ -24,19 +27,21 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
 
             Priority prioridade_task = Priority.MEDIA;//Introduzido com um valor enum por não poder ser nulo.
 
-            do
+            while (ins_again)
             {
 
                 string formato = "dd/MM/yyyy";
-
-                Console.WriteLine("\nDigite o nome da tarefa:");
-                nome_task = Console.ReadLine();
-
-                Console.WriteLine("\nDigite a descricao da tarefa:");
-                descricao_task = Console.ReadLine();
-
-
                 while (validacao1)
+                {
+                    Console.WriteLine("\nDigite o nome da tarefa:");
+                    nome_task = Console.ReadLine();
+                    if(nome_task ==)// incrementar um equals
+                }
+                    Console.WriteLine("\nDigite a descricao da tarefa:");
+                    descricao_task = Console.ReadLine();
+                }
+
+                while (validacao2)
                 {
 
                     Console.WriteLine("\nInforme a data de vencimento da tarefa:");
@@ -50,17 +55,17 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                     {
                         if (data_task < Data_Atual)
                         {
-                            Console.WriteLine($"\nDigite uma data igual, ou superior a atual ({Data_Atual}).\n");
+                            Console.WriteLine($"\nDigite uma data igual, ou superior a atual ({Data_Atual}).");
                         }
                         else
                         {
-                            validacao1 = false;
+                            validacao2= false;
                             break;
                         }
                     }
                 }//Validação da data da tarefa
 
-                while (validacao2)
+                while (validacao3)
                 {
                     Console.WriteLine("\nDigite a prioridade da tarefa (ALTA, MEDIA, BAIXA):");
                     string aux_priority = Console.ReadLine().ToUpper().Trim();
@@ -68,7 +73,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                     if (aux_priority == "ALTA" || aux_priority == "MEDIA" || aux_priority == "BAIXA")
                     {
                         prioridade_task = (Priority)Enum.Parse(typeof(Priority), aux_priority);
-                        validacao2 = false;
+                        validacao3 = false;
                         break;
                     }
                     else
@@ -76,7 +81,11 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                         Console.WriteLine("\nDado inválido. Insira uma das três prioridades a seguir: (ALTA | MEDIA | BAIXA)");
                     }
                 }//Validação da prioridade da tarefa
+
+                aux_ins.InsertData(nome_task, descricao_task, data_task, prioridade_task, status_task);
+
                 bool inserir_novamente = true;
+
                 while (inserir_novamente)
                 {
                     Console.WriteLine("\nDeseja efetuar a inserção de uma nova tarefa? (Sim || Não):");
@@ -85,22 +94,22 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                     {
                         validacao1 = true;
                         validacao2 = true;
-                        inserir_novamente = false;
+                        validacao3 = true;
                         break;
                     }
-                    else if (opcao!="sim" && opcao!="não" && opcao != "nao") 
+                    else if (opcao != "sim" && opcao != "não" && opcao != "nao")
                     {
                         Console.WriteLine("\nDigite uma opção válida.");
-                        inserir_novamente=true;
+                        inserir_novamente = true;
                     }
-                    else if(opcao=="nao" || opcao=="não"){
+                    else if (opcao == "nao" || opcao == "não")
+                    {
                         inserir_novamente = false;
+                        ins_again = false;
                         break;
                     }
                 }
-                aux_ins.InsertData(nome_task, descricao_task, data_task, prioridade_task, status_task);
             }
-            while (opcao == "sim" && opcao!="nao" && opcao!="não");
         }
     }
 }

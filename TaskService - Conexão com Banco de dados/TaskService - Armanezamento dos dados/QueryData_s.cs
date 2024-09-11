@@ -17,28 +17,28 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
             bool aux_query = true;
             bool op_qr = true;
 
-          
-                while (aux_query)
+
+            while (aux_query)
+            {
+                Console.WriteLine("\nSelecione uma opção:");
+                Console.WriteLine("\n1. Consultar uma tarefa especifica.");
+                Console.WriteLine("2. Consultar todas as tarefas atuais.");
+                Console.WriteLine("3. Consultar tarefas pendentes.");
+                Console.WriteLine("4. Consultar tarefas concluídas.");
+                Console.WriteLine("5. Consultar tarefas expiradas.");
+                Console.WriteLine("6. Consultar tarefas de alta prioridade.");
+                Console.WriteLine("7. Consultar tarefas de média prioridade.");
+                Console.WriteLine("8. Consultar tarefas de baixa prioridade.");
+                Console.WriteLine("9. Voltar ao menu principal.");
+                if ((!int.TryParse(Console.ReadLine(), out op) || (op < 1 || op > 9)))
                 {
-                    Console.WriteLine("\nSelecione uma opção:");
-                    Console.WriteLine("\n1. Consultar uma tarefa especifica.");
-                    Console.WriteLine("2. Consultar todas as tarefas atuais.\n");
-                    Console.WriteLine("3. Consultar tarefas pendentes.");
-                    Console.WriteLine("4. Consultar tarefas concluídas.");
-                    Console.WriteLine("5. Consultar tarefas expiradas.");
-                    Console.WriteLine("\n6. Consultar tarefas de alta prioridade.");
-                    Console.WriteLine("7. Consultar tarefas de média prioridade.");
-                    Console.WriteLine("8. Consultar tarefas de baixa prioridade.");
-                    Console.WriteLine("\n9. Voltar ao menu principal.");
-                    if ((!int.TryParse(Console.ReadLine(), out op) || (op < 1 || op > 5)))
-                    {
-                        Console.WriteLine("\nOpção inválida. Digite uma das opções a seguir (1 a 5).");
-                    }
-                    else
-                    {
-                        aux_query = false;
-                        break;
-                    }
+                    Console.WriteLine("\nOpção inválida. Digite uma das opções a seguir (1 a 9).");
+                }
+                else 
+                {
+                    aux_query = false;
+
+                   
                 }
 
                 switch (op)
@@ -80,9 +80,12 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                         break;
 
                     case 9:
-                        break;
+                        aux_query = false;
+                        return;
                 }
+                    }
             }
         }
     }
+
 
