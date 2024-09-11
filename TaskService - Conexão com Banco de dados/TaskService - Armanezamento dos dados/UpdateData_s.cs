@@ -21,7 +21,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
             {
                 Console.WriteLine("\nSelecione uma opção:\n");
                 Console.WriteLine("1 - Alterar o nome de uma tarefa.");
-                Console.WriteLine("2 - Alterar a descrição de uma tarefa.\n");
+                Console.WriteLine("2 - Alterar a descrição de uma tarefa.");
                 Console.WriteLine("3 - Alterar a data de vencimento de uma tarefa.");
                 Console.WriteLine("4 - Alterar a prioridade da tarefa.");
                 Console.WriteLine("5 - Alterar o status de uma tarefa.");
@@ -38,7 +38,10 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
 
                         Console.WriteLine("\nDigite o nome da tarefa que deseja realizar a alteração do nome:");
                         string nome_task_nome = Console.ReadLine();
-                        aux_up.UpdateData_name(nome_task_nome);
+
+                        Console.WriteLine($"\nDigite o novo nome a ser atribuido a tarefa ({nome_task_nome}):");
+                        string new_nome_task = Console.ReadLine();
+                        aux_up.UpdateData_name(nome_task_nome, new_nome_task );
                         break;
 
                     case 2:
@@ -121,7 +124,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                         while (validacao_stts)
                         {
                             Console.WriteLine("\nInforme o novo status da tarefa: (Pendente | Cancelada |Finalizada)");
-                            string aux_status_task = Console.ReadLine().ToUpper().Trim();
+                            string aux_status_task = Console.ReadLine().Trim();
 
                             if (aux_status_task == "Pendente" || aux_status_task == "Cancelada" || aux_status_task == "Finalizada")
                             {
@@ -131,7 +134,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                             }
                             else
                             {
-                                Console.WriteLine("\nDado inválido. Insira um dos três status a seguir: (Pendente | Finalizada)");
+                                Console.WriteLine("\nDado inválido. Insira um dos três status a seguir: (Pendente | Finalizada | Cancelada)");
                             }
                         }
                         aux_up.UpdateData_stts(nome_task_stts, new_status_task);

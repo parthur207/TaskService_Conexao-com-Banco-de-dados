@@ -34,7 +34,6 @@ namespace TaskService___Conexão_com_Banco_de_dados.Main
             Static_Count_Task aux_count = new Static_Count_Task();
             #endregion
 
-
             while (auxiliador_cnn.validacao_conexao)
             {
 
@@ -66,7 +65,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.Main
                             break;
 
                         case 2:
-                            Console.WriteLine("\n1. Remover linha, ou dado específico.\n2. Apagar todos os dados no diretório.");
+                            Console.WriteLine("\n1. Deletar uma tarefa específica.\n2. Deletar todas as tarefas do diretório.");
                             if (!int.TryParse(Console.ReadLine(), out int op_delete) || op_delete < 1 || op_delete > 2)
                             {
                                 Console.WriteLine("É necessário digitar um numero, sendo 1 ou 2.\n");

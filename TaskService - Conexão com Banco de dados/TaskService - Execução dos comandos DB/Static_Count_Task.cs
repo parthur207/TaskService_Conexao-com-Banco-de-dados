@@ -10,7 +10,7 @@ using TaskService___Conexão_com_Banco_de_dados.Main;
 
 namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos_comandos_DB
 {
-    public class Static_Count_Task
+    public class Static_Count_Task 
     {
         public static int ContarTarefas()
         {
@@ -33,6 +33,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
             catch (Exception ex)
             {
                 Console.WriteLine($"\nOcorreu um erro inesperado ao contar as tarefas:\n{ex.Message}");
+                Console_Main.Main(Task_Attributes.args);
             }
             return TotalTarefas;
         }

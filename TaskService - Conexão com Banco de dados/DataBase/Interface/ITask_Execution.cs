@@ -33,7 +33,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.DataBase.Interface
 
 
         /*Execução do comando de atualização de dados conforme atributo*/
-        public void UpdateData_name(string nome_task) { }
+        public void UpdateData_name(string nome_task, string new_nome_task) { }
         public void UpdateData_des(string nome_task, string descricao_task) { }
         public void UpdateData_date(string nome_task, DateOnly data_task) { }
         public void UpdateData_pri(string nome_task, Priority prioridade_task) { }

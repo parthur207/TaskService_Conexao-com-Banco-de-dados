@@ -46,6 +46,8 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                 {
                     rem_again = false;
                     Console_Main.Main(args);
+                    Console.WriteLine();
+
                 }
             }
         }
