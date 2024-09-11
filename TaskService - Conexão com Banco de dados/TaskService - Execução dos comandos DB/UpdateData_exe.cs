@@ -66,8 +66,8 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
                 Console.WriteLine($"\nOcorreu um erro inesperado: {ex.Message.ToString()}");
                 Console_Main.Main(args);
             }
-
         }
+
         public void UpdateData_des(string nome_task_des, string new_descricao_task)
         {
             Nome_Task = nome_task_des;
