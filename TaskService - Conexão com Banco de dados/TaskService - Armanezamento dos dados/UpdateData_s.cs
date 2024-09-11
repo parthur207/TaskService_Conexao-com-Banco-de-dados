@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TaskService___Conexão_com_Banco_de_dados.Atributos;
 using TaskService___Conexão_com_Banco_de_dados.DataBase.Interface;
 using MySql.Data.MySqlClient;
+using TaskService___Conexão_com_Banco_de_dados.Main;
 
 namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_dos_dados
 {
@@ -138,7 +139,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
 
                     case 6:
                         aux = false;
-                        return;
+                        Console_Main.Main(args);
                         break;
 
                 }

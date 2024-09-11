@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using TaskService___Conexão_com_Banco_de_dados.DataBase.Interface;
+using TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos_comandos_DB;
 
 namespace TaskService___Conexão_com_Banco_de_dados.Atributos
 {
-    public class Task_Attributes
+    public class Task_Attributes : Static_Count_Task
     {
         #region Password (Deletar banco)
         private string Password = "Foco!";
@@ -24,7 +25,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.Atributos
 
         public DateOnly Data_Atual = DateOnly.FromDateTime(DateTime.Now); //Atributo com a data atual para comparativos.
 
-
+        public string[] args;// Atributo presente a método static "MAIN". Criado para referencia-lo em chamadas do método "Main".
     }
     public enum Priority //Criação de uma tipagem "Priority", vinculada a um "Enum" dando a possibilidade de atribuir somente os tres valores a variavel "TaskPriority".
     {

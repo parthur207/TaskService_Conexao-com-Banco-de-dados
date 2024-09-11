@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TaskService___Conexão_com_Banco_de_dados.Atributos;
 using TaskService___Conexão_com_Banco_de_dados.DataBase.Interface;
 using MySql.Data.MySqlClient;
+using TaskService___Conexão_com_Banco_de_dados.Main;
 
 namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_dos_dados
 {
@@ -13,7 +14,8 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
     {
         public void Storage_InsertData(ITask_Execution aux_ins)
         {
-            string nome_task="", descricao_task="";
+
+            string nome_task = "", descricao_task = "";
             bool validacao1 = true;
             bool validacao2 = true;
             bool validacao3 = true;
@@ -30,18 +32,36 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
             while (ins_again)
             {
 
-               
+
                 while (validacao1)
                 {
                     Console.WriteLine("\nDigite o nome da tarefa:");
                     nome_task = Console.ReadLine();
-                   //if(nome_task ==)// incrementar um equals
+                    if (string.IsNullOrWhiteSpace(nome_task))
+                    {
+                        Console.WriteLine("O valor não pode ser nulo ou em branco.");
+                    }
+                    else
+                    {
+                        validacao1 = false;
+                    }
                 }
+                while (validacao2)
+                {
                     Console.WriteLine("\nDigite a descricao da tarefa:");
                     descricao_task = Console.ReadLine();
+                    if (string.IsNullOrEmpty(descricao_task))
+                    {
+                        Console.WriteLine("O valor não pode ser nulo ou em branco.");
+                    }
+                    else
+                    {
+                        validacao2 = false;
+                    }
                 }
 
-                while (validacao2)
+
+                while (validacao3)
                 {
 
                     Console.WriteLine("\nInforme a data de vencimento da tarefa:");
@@ -61,13 +81,13 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                         }
                         else
                         {
-                            validacao2= false;
+                            validacao3 = false;
                             break;
                         }
                     }
                 }//Validação da data da tarefa
 
-                while (validacao3)
+                while (validacao4)
                 {
                     Console.WriteLine("\nDigite a prioridade da tarefa (ALTA, MEDIA, BAIXA):");
                     string aux_priority = Console.ReadLine().ToUpper().Trim();
@@ -75,7 +95,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                     if (aux_priority == "ALTA" || aux_priority == "MEDIA" || aux_priority == "BAIXA")
                     {
                         prioridade_task = (Priority)Enum.Parse(typeof(Priority), aux_priority);
-                        validacao3 = false;
+                        validacao4 = false;
                         break;
                     }
                     else
@@ -94,24 +114,31 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                     opcao = Console.ReadLine().ToLower();
                     if (opcao == "sim")
                     {
-                        validacao1 = true;
-                        validacao2 = true;
-                        validacao3 = true;
+                        
                         break;
                     }
                     else if (opcao != "sim" && opcao != "não" && opcao != "nao")
                     {
                         Console.WriteLine("\nDigite uma opção válida.");
                         inserir_novamente = true;
+                        
                     }
                     else if (opcao == "nao" || opcao == "não")
                     {
                         inserir_novamente = false;
                         ins_again = false;
+                        validacao1 = false;
+                        validacao2 = false;
+                        validacao3 = false;
+                        validacao4 = false;
+
+                        Console.WriteLine("\n");
+                        Console_Main.Main(args);;
                         break;
                     }
                 }
             }
         }
     }
+}
 

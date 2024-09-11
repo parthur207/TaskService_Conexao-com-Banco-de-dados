@@ -30,9 +30,11 @@ namespace TaskService___Conexão_com_Banco_de_dados.Main
             InsertData_exe aux_Ins_exe = new InsertData_exe();
             QueryData_exe aux_Qr_exe = new QueryData_exe();
             UpdateData_exe aux_Up_exe = new UpdateData_exe();
+
+            Static_Count_Task aux_count = new Static_Count_Task();
             #endregion
 
-            
+
             while (auxiliador_cnn.validacao_conexao)
             {
 
@@ -45,8 +47,9 @@ namespace TaskService___Conexão_com_Banco_de_dados.Main
                 Console.WriteLine("2. Deletar tarefa.");
                 Console.WriteLine("3. Atualizar atributo de uma tarefa.");
                 Console.WriteLine("4. Realizar consulta de uma tarefa.");
-                Console.WriteLine("5. Sair");
-                if (!int.TryParse(Console.ReadLine(), out int op) || op < 1 || op > 5)
+                Console.WriteLine("5. Exibir numero de tarefas atuais.");
+                Console.WriteLine("6. Sair");
+                if (!int.TryParse(Console.ReadLine(), out int op) || op < 1 || op > 6)
                 {
                     Console.WriteLine("\nOpção inválida");
                     Console.WriteLine("\nDigite novamente.\n");
@@ -88,8 +91,13 @@ namespace TaskService___Conexão_com_Banco_de_dados.Main
                         case 4:
                             auxiliador_qr.Storage_QueryData(aux_Qr_exe);
                             break;
-
                         case 5:
+                            int NumeroTarefas= ContarTarefas();
+                            Console.WriteLine($"\nNumero de tarefas presentes: {NumeroTarefas}\n");
+                            Console_Main.Main(args);
+                            break;
+
+                        case 6:
                             Console.WriteLine("\nPrograma Encerrado.");
                             string ConnectionString_main = GetConnectionString();
                             using (var close_db = new MySqlConnection(ConnectionString_main))

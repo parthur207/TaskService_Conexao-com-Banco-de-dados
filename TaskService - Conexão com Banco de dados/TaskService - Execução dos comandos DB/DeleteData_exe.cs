@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TaskService___Conexão_com_Banco_de_dados.DataBase;
 using MySql.Data.MySqlClient;
 using TaskService___Conexão_com_Banco_de_dados.DataBase.Interface;
+using TaskService___Conexão_com_Banco_de_dados.Main;
 
 namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos_comandos_DB
 {
@@ -46,6 +47,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
             catch (Exception ex)
             {
                 Console.WriteLine($"\nOcorreu um erro inesperado:\n{ex.Message.ToString()}");
+                Console_Main.Main(args);
             }
         }
     }

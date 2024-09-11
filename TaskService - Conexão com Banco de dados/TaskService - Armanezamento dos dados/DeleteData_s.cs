@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TaskService___Conexão_com_Banco_de_dados.DataBase.Interface;
 using MySql.Data.MySqlClient;
 using TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos_comandos_DB;
+using TaskService___Conexão_com_Banco_de_dados.Main;
 
 namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_dos_dados
 {
@@ -35,7 +36,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                 Console.WriteLine("\nDeseja realizar uma nova remoção (1. Sim | 2. Não):");
                 while (!int.TryParse(Console.ReadLine(), out op_rem) || op_rem < 1 || op_rem > 2)
                 {
-                    Console.WriteLine("\nDigite uma opção válida. (1. Sim || 2. Não");
+                    Console.WriteLine("\nDigite uma opção válida. (1. Sim || 2. Não)");
                 }
                 if (op_rem == 1)
                 {
@@ -44,8 +45,8 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                 else if (op_rem == 2)
                 {
                     rem_again = false;
+                    Console_Main.Main(args);
                 }
-
             }
         }
     }

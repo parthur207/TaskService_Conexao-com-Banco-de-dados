@@ -31,7 +31,6 @@ namespace TaskService___Conexão_com_Banco_de_dados.Verificação_de_data___Task
 
                                 if (data_task < aux_date.Data_Atual)
                                 {
-                                  
                                     
                                     string tarefaNome = Reader["Nome_Task"].ToString();
                                     string DataExpirada = data_task.ToString("dd/MM/yyyy");
@@ -52,7 +51,6 @@ namespace TaskService___Conexão_com_Banco_de_dados.Verificação_de_data___Task
                                             Console.WriteLine($"A Tarefa ({tarefaNome}) foi marcada como Expirada. Data da tarefa: {DataExpirada}");
                                         }
                                     }
-
                                     break;
                                 }
                             }
