@@ -13,7 +13,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
     {
         public void Storage_InsertData(ITask_Execution aux_ins)
         {
-            string nome_task, descricao_task;
+            string nome_task="", descricao_task="";
             bool validacao1 = true;
             bool validacao2 = true;
             bool validacao3 = true;
@@ -30,12 +30,12 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
             while (ins_again)
             {
 
-                string formato = "dd/MM/yyyy";
+               
                 while (validacao1)
                 {
                     Console.WriteLine("\nDigite o nome da tarefa:");
                     nome_task = Console.ReadLine();
-                    if(nome_task ==)// incrementar um equals
+                   //if(nome_task ==)// incrementar um equals
                 }
                     Console.WriteLine("\nDigite a descricao da tarefa:");
                     descricao_task = Console.ReadLine();
@@ -46,6 +46,8 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
 
                     Console.WriteLine("\nInforme a data de vencimento da tarefa:");
                     string Data_Task_string = Console.ReadLine();
+
+                    string formato = "dd/MM/yyyy";
 
                     if (!DateOnly.TryParseExact(Data_Task_string, formato, null, System.Globalization.DateTimeStyles.None, out data_task))
                     {
