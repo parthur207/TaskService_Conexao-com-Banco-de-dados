@@ -4,7 +4,7 @@ USE Task;
 
 CREATE TABLE all_tasks (
     Nome_Task VARCHAR(50) NOT NULL,
-    Data_Task DATE,
+    Data_Task DATE NOT NULL,
     Descricao_Task VARCHAR(255),
     Prioridade_Task VARCHAR(20) NOT NULL,
     Status_Task VARCHAR(20),
