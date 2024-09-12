@@ -184,7 +184,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                         Status_Type new_status_task = Status_Type.Pendente;
                         while (validacao_stts)
                         {
-                            Console.WriteLine("\nInforme o novo status da tarefa: (Pendente | Cancelada |Finalizada)");
+                            Console.WriteLine("\nInforme o novo status da tarefa: (Pendente | Cancelada | Finalizada)");
                             string aux_status_task = Console.ReadLine().Trim();
 
                             if (aux_status_task == "Pendente" || aux_status_task == "Cancelada" || aux_status_task == "Finalizada")
