@@ -14,7 +14,6 @@ namespace TaskService___Conexão_com_Banco_de_dados.Atributos
         #region Password (Deletar banco)
         private string Password = "Foco!";
         protected string Password_Acess { get { return Password; } }
-
         #endregion
 
         protected string Nome_Task { get; set; }

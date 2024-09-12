@@ -5,7 +5,7 @@ using MySql.Data.MySqlClient;
 
 namespace TaskService___Conexão_com_Banco_de_dados.Verificação_de_data___Task_Expired
 {
-    public class VerificationDate : Task_Attributes
+    public class CheckTask : Task_Attributes
     {
         /* As tarefas que possuírem datas expiradas, ou seja, antecedentes a data de hoje, 
         terão seus status alterados automaticamente após a introdução do programa */

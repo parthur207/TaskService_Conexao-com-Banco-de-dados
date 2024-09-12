@@ -38,7 +38,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.Main
             {
 
                 
-                VerificationDate.VerificationDate_Expired(aux_date);
+                CheckTask.VerificationDate_Expired(aux_date);
 
                 Console.WriteLine("Task Service\n");
                 Console.WriteLine("Menu CRUD");
