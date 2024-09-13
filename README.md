@@ -31,7 +31,7 @@ Oferece diversas opções de consulta:
 - Tarefas pendentes
 - Tarefas finalizadas
 - Tarefas expiradas
-- Prioridade da tarefa (ALTA, MÉDIA ou BAIXA)
+- Tarefas conforme a sua prioridade 
 
 ### 5. Verificação Automática de Expiração
 O sistema verifica se as tarefas pendentes estão expiradas ao comparar a data atual com a data de vencimento, alterando automaticamente o status da tarefa para "Expirada".
