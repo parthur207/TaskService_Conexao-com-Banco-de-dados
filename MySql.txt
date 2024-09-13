@@ -2,7 +2,7 @@ CREATE DATABASE Task;
 
 USE Task;
 
-CREATE TABLE all_tasks (
+CREATE TABLE All_tasks (
     Nome_Task VARCHAR(50) NOT NULL,
     Data_Task DATE NOT NULL,
     Descricao_Task VARCHAR(255),
