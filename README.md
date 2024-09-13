@@ -56,11 +56,13 @@ O sistema verifica se as tarefas pendentes estão expiradas ao comparar a data a
 
 ## Estrutura do Projeto
 
-- **Atributos.cs**: Define os atributos da tarefa, como Nome, Descrição, Data, Prioridade e Status. Também inclui enums para os valores de prioridade e status.
-- **Connect_db.cs**: Gerencia a conexão com o banco de dados MySQL.
-- **ITask_Execution.cs**: Interface que define as operações principais como inserir, remover, consultar e atualizar tarefas.
-- **TaskService.cs**: Implementa a lógica de armazenamento e execução dos comandos no banco de dados.
-- **VerificationDate.cs**: Verifica se há tarefas expiradas e altera automaticamente seu status.
+Task_Attributes: Define os atributos de cada tarefa (Nome, Descrição, Data de vencimento, Prioridade, Status) e utiliza modificadores de acesso protected/public.
+Connect_db: Gerencia a conexão com o banco de dados MySQL e implementa a string de conexão.
+TaskService - Armazenamento de dados (pasta de classes): Incremento dos métodos da interface ‘ITask_Storage’, onde é executado uma interação com o usuário, coleta de dados e redirecionamento para os métodos da interface ‘ITask_Execution’.
+TasKService - Execução dos comandos DB (pasta de classes): Conforme apontamento dos métodos da interface ‘ITask_Storage’, é feito a execução dos comandos (CRUD), onde ocorre a lógica de gerenciamento de tarefas e execução de operações no banco de dados com base nos métodos definidos.
+Static_Count_Task: Função responsável em realizar a contagem de tarefas presentes no banco de dados, por meio de uma operação ADO.NET e retorno de um número inteiro com o resultado.
+CheckTask: Incremento de uma lógica concisa que realiza uma operação de consulta de tarefas com status pendente, convertendo o status para expirado caso a data vinculada a tarefa seja inferior a data atual.
+Console_Main: Contém o método Main que controla o fluxo da aplicação e gerencia as interações com o usuário.
 
 ## Contato
 - **Email**: [parthur207@gmail.com]
