@@ -11,7 +11,7 @@ Permite inserir novas tarefas com os seguintes atributos:
 - **Descrição**
 - **Data de vencimento**
 - **Prioridade** (ALTA, MÉDIA ou BAIXA)
-- **Status** (Pendente por padrão)
+- **Status**: Expirada, Pendente, Cancelada, Finalizada | (Pendente por padrão)
 
 ### 2. Remoção de Tarefas
 Remove tarefas com base no nome especificado pelo usuário. Também é possível remover todas as tarefas do banco de dados.
