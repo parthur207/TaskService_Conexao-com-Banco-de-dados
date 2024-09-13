@@ -1,3 +1,5 @@
+//Para realização de testes, é necessário a criação de um banco de dados MySql conforme codificação abaixo e repasse do caminho de conexão do banco na classe "Connect_db.cs".
+
 CREATE DATABASE Task;
 
 USE Task;
