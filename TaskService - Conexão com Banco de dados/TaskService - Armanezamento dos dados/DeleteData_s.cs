@@ -21,10 +21,19 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
             while (rem_again)
             {
                 int op_rem;
-                string nome_task;
+                string nome_task="";
 
-                Console.WriteLine("\nDigite o nome da tarefa específica que deseja realizar a remoção:");
-                nome_task = Console.ReadLine();
+                bool error = true;
+                while (error) {
+                    Console.WriteLine("\nDigite o nome da tarefa específica que deseja realizar a remoção:");
+                    nome_task = Console.ReadLine();
+
+                    if (string.IsNullOrEmpty(nome_task))
+                    {
+                        Console.WriteLine("\nO valor fornecido não pode ser nulo.");
+                    }
+                    else { error = false; }
+                }
 
                 if (nome_task == "sair")
                 {
