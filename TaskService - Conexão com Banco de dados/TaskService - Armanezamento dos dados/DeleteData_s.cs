@@ -32,22 +32,24 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                 }
 
                 aux_dlt_exe.DeleteData(nome_task);
+                if (dlt_again.validacao_rem = true)
+                {
+                    Console.WriteLine("\nDeseja realizar uma nova remoção (1. Sim | 2. Não):");
+                    while (!int.TryParse(Console.ReadLine(), out op_rem) || op_rem < 1 || op_rem > 2)
+                    {
+                        Console.WriteLine("\nDigite uma opção válida. (1. Sim || 2. Não)");
+                    }
+                    if (op_rem == 1)
+                    {
+                        rem_again = true;
+                    }
+                    else if (op_rem == 2)
+                    {
+                        rem_again = false;
+                        Console_Main.Main(args);
+                        Console.WriteLine();
 
-                Console.WriteLine("\nDeseja realizar uma nova remoção (1. Sim | 2. Não):");
-                while (!int.TryParse(Console.ReadLine(), out op_rem) || op_rem < 1 || op_rem > 2)
-                {
-                    Console.WriteLine("\nDigite uma opção válida. (1. Sim || 2. Não)");
-                }
-                if (op_rem == 1)
-                {
-                    rem_again = true;
-                }
-                else if (op_rem == 2)
-                {
-                    rem_again = false;
-                    Console_Main.Main(args);
-                    Console.WriteLine();
-
+                    }
                 }
             }
         }

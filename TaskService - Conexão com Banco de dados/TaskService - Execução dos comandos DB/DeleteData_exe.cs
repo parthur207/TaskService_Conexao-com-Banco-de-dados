@@ -13,6 +13,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
     public class DeleteData_exe : DeleteAll_exe, ITask_Storage
     {
         public bool validacao_rem=false;
+
         public void DeleteData(string nome_task)
         {
 
