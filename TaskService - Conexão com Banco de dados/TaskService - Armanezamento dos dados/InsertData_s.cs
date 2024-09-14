@@ -114,7 +114,12 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                     opcao = Console.ReadLine().ToLower();
                     if (opcao == "sim")
                     {
-                        
+                        inserir_novamente = false;
+                        validacao1 = true;
+                         validacao2 = true;
+                         validacao3 = true;
+                         validacao4 = true;
+                         ins_again = true;
                         break;
                     }
                     else if (opcao != "sim" && opcao != "não" && opcao != "nao")
