@@ -7,16 +7,17 @@ using TaskService___Conexão_com_Banco_de_dados.DataBase;
 using MySql.Data.MySqlClient;
 using TaskService___Conexão_com_Banco_de_dados.DataBase.Interface;
 using TaskService___Conexão_com_Banco_de_dados.Main;
+using TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_dos_dados;
 
 namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos_comandos_DB
 {
     public class DeleteData_exe : DeleteAll_exe, ITask_Storage
     {
-        public bool validacao_rem=false;
+        public bool validacao_rem;
 
         public void DeleteData(string nome_task)
         {
-
+            DeleteData_s aux=new DeleteData_s();
             Nome_Task = nome_task;
 
             string cnn_dlt = Connect_db.GetConnectionString();
@@ -35,13 +36,15 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
 
                     if (LinhasAfetadas == 0)
                     {
-                        Console.WriteLine($"\nNão foi possível encontrar a tarefa ({nome_task}) para exclusão.\nCertifique-se se a escrita esteja correta. ");
-                        Console.WriteLine("\nCaso queira retornar ao menu principal, digite 'sair'.\n");
+                        validacao_rem = false;
+                        Console.WriteLine($"\nNão foi possível encontrar a tarefa ({nome_task}) para exclusão.\nCertifique-se se a escrita esteja correta.");
                     }
                     else
                     {
-                        validacao_rem = true;
+
                         Console.WriteLine("\nTarefa removida com sucesso.");
+                        validacao_rem = true;
+                        aux.error = false;
                     }
                 }
             }

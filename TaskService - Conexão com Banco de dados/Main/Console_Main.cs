@@ -68,7 +68,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.Main
                             Console.WriteLine("\n1. Deletar uma tarefa específica.\n2. Deletar todas as tarefas do diretório.");
                             if (!int.TryParse(Console.ReadLine(), out int op_delete) || op_delete < 1 || op_delete > 2)
                             {
-                                Console.WriteLine("É necessário digitar um numero, sendo 1 ou 2.\n");
+                                Console.WriteLine("\nÉ necessário digitar um numero, sendo 1 ou 2.");
                             }
                             else
                             {
