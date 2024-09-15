@@ -27,7 +27,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
 
                 error = true;
                 while (error) {
-                    Console.WriteLine("\nDigite o nome da tarefa específica que deseja realizar a remoção. Digite 'sair' para retornar ao menu:");
+                    Console.WriteLine("\n- Digite o nome da tarefa específica que deseja realizar a remoção.\n- Digite 'sair' para retornar ao menu:");
                     nome_task = Console.ReadLine();
 
                     if (string.IsNullOrEmpty(nome_task))
@@ -39,31 +39,14 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
 
                 if (nome_task == "sair")
                 {
-                    rem_again = false;
-                    break;
+                    Console.WriteLine();
+                    Console_Main.Main(args);
+                    
                 }
 
                 aux_dlt_exe.DeleteData(nome_task);
-                if (dlt_again.validacao_rem == true)
-                {
-                    Console.WriteLine("\nDeseja realizar uma nova remoção (1. Sim | 2. Não):");
-                    while (!int.TryParse(Console.ReadLine(), out op_rem) || op_rem < 1 || op_rem > 2)
-                    {
-                        Console.WriteLine("\nDigite uma opção válida. (1. Sim || 2. Não)");
-                    }
-                    if (op_rem == 1)
-                    {
-                        rem_again = true;
-                    }
-                    else if (op_rem == 2)
-                    {
-                        rem_again = false;
-                        Console_Main.Main(args);
-                        Console.WriteLine();
-
-                    }
                 }
             }
         }
     }
-}
+

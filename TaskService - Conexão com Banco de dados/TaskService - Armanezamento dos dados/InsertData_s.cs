@@ -45,7 +45,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                     {
                         validacao1 = false;
                     }
-                }
+                }//Espaços em branco
                 while (validacao2)
                 {
                     Console.WriteLine("\nDigite a descricao da tarefa:");
@@ -58,8 +58,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                     {
                         validacao2 = false;
                     }
-                }
-
+                }//Espaços em branco
 
                 while (validacao3)
                 {
@@ -110,25 +109,25 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
 
                 while (inserir_novamente)
                 {
-                    Console.WriteLine("\nDeseja efetuar a inserção de uma nova tarefa? (Sim || Não):");
+                    Console.WriteLine("\nDeseja efetuar a inserção de uma nova tarefa? (sim || nao):");
                     opcao = Console.ReadLine().ToLower();
                     if (opcao == "sim")
                     {
                         inserir_novamente = false;
                         validacao1 = true;
-                         validacao2 = true;
-                         validacao3 = true;
-                         validacao4 = true;
-                         ins_again = true;
+                        validacao2 = true;
+                        validacao3 = true;
+                        validacao4 = true;
+                        ins_again = true;
                         break;
                     }
                     else if (opcao != "sim" && opcao != "não" && opcao != "nao")
                     {
                         Console.WriteLine("\nDigite uma opção válida.");
                         inserir_novamente = true;
-                        
+
                     }
-                    else if (opcao == "nao" || opcao == "não")
+                    else if (opcao == "nao")
                     {
                         inserir_novamente = false;
                         ins_again = false;
@@ -137,9 +136,9 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                         validacao3 = false;
                         validacao4 = false;
 
-                        Console.WriteLine("\n");
-                        Console_Main.Main(args);;
-                        break;
+                        Console.WriteLine("");
+                        Console_Main.Main(args);
+
                     }
                 }
             }

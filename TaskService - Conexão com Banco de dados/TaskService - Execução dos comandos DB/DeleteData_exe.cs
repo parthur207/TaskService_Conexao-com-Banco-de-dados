@@ -37,7 +37,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
                     if (LinhasAfetadas == 0)
                     {
                         validacao_rem = false;
-                        Console.WriteLine($"\nNão foi possível encontrar a tarefa ({nome_task}) para exclusão.\nCertifique-se se a escrita esteja correta.");
+                        Console.WriteLine($"\nNão foi possível encontrar a tarefa ({nome_task}) para exclusão.\nCertifique-se que a escrita esteja correta.");
                     }
                     else
                     {
