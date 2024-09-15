@@ -8,11 +8,13 @@ using TaskService___Conexão_com_Banco_de_dados.DataBase.Interface;
 using TaskService___Conexão_com_Banco_de_dados.DataBase;
 using MySql.Data.MySqlClient;
 using TaskService___Conexão_com_Banco_de_dados.Main;
+using TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_dos_dados;
 
 namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos_comandos_DB
 {
     public class UpdateData_exe : QueryData_exe, ITask_Storage
     {
+        public bool aux = true, validation1 = true, validation2 = true, validation3 = true, validation4 = true, validation5 = true, validation6 = true, validation7 = true;
         public void UpdateData_name(string nome_task, string new_nome_task)
         {
 
@@ -48,7 +50,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
 
                                 int LinhasAfetadas2=comando_up_name.ExecuteNonQuery();
 
-                                if (LinhasAfetadas2==0)
+                                if (LinhasAfetadas2 == 0)
                                 {
                                     Console.WriteLine("\nOcorreu um erro na tentativa de atualizar o nome da tarefa solicitada.\n");
                                 }
@@ -151,7 +153,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
                             string comando_up_date_string = "UPDATE All_Task SET Data_Task=@Data_Task WHERE Nome_Task=@Nome_Task;";
                             using (var comando_up_date= new MySqlCommand(comando_up_date_string, conexao))
                             {
-                                comando_up_date.Parameters.AddWithValue(@"Data_Task", new_data_task);
+                                comando_up_date.Parameters.AddWithValue(@"Data_Task", new_data_task.ToString("yyy-MM-dd"));
                                 comando_up_date.Parameters.AddWithValue(@"Nome_Task", nome_task_data);
                                 int LinhasAfetadas2= comando_up_date.ExecuteNonQuery();
 
@@ -198,7 +200,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
 
                         if (LinhasAfetadas==null)
                         {
-                            Console.WriteLine("\nNão foi encontrado nenhuma tarefa com o nome informado.\n");
+                            Console.WriteLine("Não foi encontrado nenhuma tarefa com o nome informado.\n");
                         }
                         else
                         {
@@ -207,7 +209,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
                             {
 
                                 comando_up_pri.Parameters.AddWithValue(@"Nome_Task", nome_task_pri);
-                                comando_up_pri.Parameters.AddWithValue(@"Prioridade_Task", new_prioridade_task);
+                                comando_up_pri.Parameters.AddWithValue(@"Prioridade_Task", new_prioridade_task.ToString());
 
                                 int LinhasAfetadas2= comando_up_pri.ExecuteNonQuery();
 
@@ -257,10 +259,10 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
                         {
                             //validacao_up5 = false;
 
-                            string comando_up_stts_string = "UPDATE All_Task SET Staus_Task=@new_status_task WHERE Nome_Task=@Nome_Task;";
+                            string comando_up_stts_string = "UPDATE All_Task SET Status_Task=@new_status_task WHERE Nome_Task=@Nome_Task;";
                             using (var comando_up_stts = new MySqlCommand(comando_up_stts_string, conexao)) { 
 
-                                comando_up_stts.Parameters.AddWithValue(@"new_status_task", new_status_task);
+                                comando_up_stts.Parameters.AddWithValue(@"new_status_task", new_status_task.ToString());
                                 comando_up_stts.Parameters.AddWithValue(@"Nome_Task", nome_task_stts);
                             
                                 int LinhasAfetadas2=comando_up_stts.ExecuteNonQuery();

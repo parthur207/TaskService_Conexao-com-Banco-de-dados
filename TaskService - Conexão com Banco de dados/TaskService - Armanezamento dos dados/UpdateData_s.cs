@@ -40,7 +40,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                         string nome_task_nome="";
                         while (validation1)
                         {
-                            Console.WriteLine("\nDigite o nome da tarefa que deseja realizar a alteração do nome:");
+                            Console.WriteLine("\nDigite o NOME da tarefa que deseja realizar a alteração do nome:");
                            nome_task_nome = Console.ReadLine();
                             if (string.IsNullOrEmpty(nome_task_nome))
                             {
@@ -53,7 +53,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                         }
                         while (validation2)
                         {
-                            Console.WriteLine($"\nDigite o novo nome a substituir ({nome_task_nome}):");
+                            Console.WriteLine($"\nDigite o novo NOME a substituir ({nome_task_nome}):");
                             string new_nome_task = Console.ReadLine();
 
                             if (string.IsNullOrEmpty(new_nome_task))
@@ -70,7 +70,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
 
                     case 2:
                         while (validation3) {
-                            Console.WriteLine("\nDigite o nome da tarefa que deseja realizar a alteração da descrição:");
+                            Console.WriteLine("\nDigite o NOME da tarefa que deseja realizar a alteração da descrição:");
                             string nome_task_des = Console.ReadLine();
                             if (string.IsNullOrEmpty(nome_task_des))
                             {
@@ -92,7 +92,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                         string nomeTarefa="";
                         while (validation4)
                         {
-                            Console.WriteLine("\nDigite o nome da tarefa que deseja alterar a data de expiração:");
+                            Console.WriteLine("\nDigite o NOME da tarefa que deseja alterar a data de expiração:");
                             nomeTarefa = Console.ReadLine();
 
                             if (string.IsNullOrEmpty(nomeTarefa))
@@ -120,6 +120,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                             }
                             else
                             {
+                                validation5 = false;
                                 aux_up.UpdateData_date(nomeTarefa, novaData);
                             }
                         }
@@ -130,7 +131,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                         string nome_task_pri = "";
                         while (validation6)
                         {
-                            Console.WriteLine("\nDigite o nome da task que deseja realizar a alteração da prioridade:");
+                            Console.WriteLine("\nDigite o NOME da task que deseja realizar a alteração da prioridade:");
                             nome_task_pri = Console.ReadLine();
 
                             if(string.IsNullOrEmpty(nome_task_pri)){
@@ -169,7 +170,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                     case 5:
                         string nome_task_stts = "";
                         while (validation7) {
-                            Console.WriteLine("\nDigite o nome da tarefa que deseja realizar a alteração do status:");
+                            Console.WriteLine("\nDigite o NOME da tarefa que deseja realizar a alteração do status:");
                             nome_task_stts = Console.ReadLine();
                             if (string.IsNullOrEmpty(nome_task_stts))
                             {
