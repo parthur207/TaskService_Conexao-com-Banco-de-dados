@@ -29,6 +29,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
                     {
                         Console.WriteLine("\n\nTodos os dados foram excluídos.");
                     }
+
                     else
                     {
                         Console.WriteLine("\nOcorreu um erro na tentativa de exclusão do banco de dados. Certifique-se se o banco já está vazio.");
