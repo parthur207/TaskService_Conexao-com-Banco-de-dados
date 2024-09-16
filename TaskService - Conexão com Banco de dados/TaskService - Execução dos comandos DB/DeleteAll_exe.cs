@@ -27,7 +27,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
                     int linhasafetadas = cmd_delete.ExecuteNonQuery();
                     if (linhasafetadas > 0)
                     {
-                        Console.WriteLine("\nTodos os dados foram excluídos.");
+                        Console.WriteLine("\n\nTodos os dados foram excluídos.");
                     }
                     else
                     {

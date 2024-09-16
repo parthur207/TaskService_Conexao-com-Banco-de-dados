@@ -15,11 +15,23 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
         {
             DeleteAll_exe aaux_dlt_all2 = new DeleteAll_exe();
             Console.WriteLine("\nConfirme a ação digitando a senha cadastrada:");
-            string senha = Console.ReadLine();
+            string Teclas_digitadas = string.Empty;
+            ConsoleKeyInfo Teclas;
 
-            if (senha != Password_Acess)
+            do
             {
-                Console.WriteLine("\nSenha incorreta.");
+                Teclas = Console.ReadKey(intercept: true);
+                if (Teclas.Key != ConsoleKey.Enter)
+                {
+                    Teclas_digitadas += Teclas.KeyChar;
+                }
+                Console.Write("*");
+            }
+            while (Teclas.Key != ConsoleKey.Enter);
+
+            if (Teclas_digitadas != Password_Acess)
+            {
+                Console.WriteLine("\n\nSenha incorreta.");
             }
             else
             {

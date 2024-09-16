@@ -102,8 +102,9 @@ namespace TaskService___Conexão_com_Banco_de_dados.Main
                             using (var close_db = new MySqlConnection(ConnectionString_main))
                             {
                                 close_db.Close();//interrompe a conexão com o banco
-                            }
                             return;
+                            }
+                           
 
                     }
                 }
