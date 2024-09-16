@@ -8,6 +8,8 @@ using TaskService___Conexão_com_Banco_de_dados.DataBase.Interface;
 using MySql.Data.MySqlClient;
 using TaskService___Conexão_com_Banco_de_dados.Main;
 using System.Diagnostics.Eventing.Reader;
+using TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos_comandos_DB;
+using MySqlX.XDevAPI.Common;
 
 namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_dos_dados
 {
@@ -16,11 +18,15 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
         public void Storage_UpdateData(ITask_Execution aux_up)
         {
             int op_up;
-            bool aux = true, validation1 = true, validation2 = true, validation3 = true, validation4 = true,validation5 = true, validation6=true, validation7=true;
+             
             string formato = "dd/MM/yyyy";
 
-            while (aux)
+            while (UpdateData_exe.aux_up_exe)
             {
+                #region Variaveis bool de validação 
+                UpdateData_exe.validation1 = true; UpdateData_exe.validation2 = true; UpdateData_exe.validation3 = true; UpdateData_exe.validation4 = true; UpdateData_exe.validation5 = true; UpdateData_exe. validation6 = true; UpdateData_exe.validation7 = true; UpdateData_exe.validation8 = true;
+                #endregion   
+                
                 Console.WriteLine("\nSelecione uma opção:\n");
                 Console.WriteLine("1 - Alterar o nome de uma tarefa.");
                 Console.WriteLine("2 - Alterar a descrição de uma tarefa.");
@@ -38,7 +44,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                 {
                     case 1:
                         string nome_task_nome="";
-                        while (validation1)
+                        while (UpdateData_exe.validation1)
                         {
                             Console.WriteLine("\nDigite o NOME da tarefa que deseja realizar a alteração do nome:");
                            nome_task_nome = Console.ReadLine();
@@ -48,10 +54,10 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                             }
                             else
                             {
-                                validation1 = false;
+                                UpdateData_exe.validation1 = false;
                             }
                         }
-                        while (validation2)
+                        while (UpdateData_exe.validation2)
                         {
                             Console.WriteLine($"\nDigite o novo NOME a substituir ({nome_task_nome}):");
                             string new_nome_task = Console.ReadLine();
@@ -62,35 +68,48 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                             }
                             else
                             {
-                                validation2 = false;
+                                UpdateData_exe.validation2 = false;
                                 aux_up.UpdateData_name(nome_task_nome, new_nome_task);
                             }
                         }
                         break;
 
                     case 2:
-                        while (validation3) {
+                        string nome_task_des = "";
+                        while (UpdateData_exe.validation3)
+                        {
                             Console.WriteLine("\nDigite o NOME da tarefa que deseja realizar a alteração da descrição:");
-                            string nome_task_des = Console.ReadLine();
+                           nome_task_des = Console.ReadLine();
                             if (string.IsNullOrEmpty(nome_task_des))
                             {
                                 Console.WriteLine("\nO valor informado não pode ser nulo.");
                             }
                             else
                             {
-                                validation3 = false;
-
-                                Console.WriteLine($"\nDigite a nova descrição de {nome_task_des}:");
-                                string descricao_task_des = Console.ReadLine();
-
-                                aux_up.UpdateData_des(nome_task_des, descricao_task_des);
+                                UpdateData_exe.validation3 = false;
                             }
                         }
+                            while (UpdateData_exe.validation4)
+                            {
+                                Console.WriteLine($"\nDigite a nova descrição de ({nome_task_des}):");
+                                string descricao_task_des = Console.ReadLine();
+
+                                if (string.IsNullOrEmpty(descricao_task_des))
+                                {
+                                    Console.WriteLine("\nA nova descrição não pode ser nula.");
+                                }
+                                else
+                                {
+                                    UpdateData_exe.validation4 = false;
+                                    aux_up.UpdateData_des(nome_task_des, descricao_task_des);
+                                }
+                            }
+                        
                         break;
 
                     case 3:
                         string nomeTarefa="";
-                        while (validation4)
+                        while (UpdateData_exe.validation5)
                         {
                             Console.WriteLine("\nDigite o NOME da tarefa que deseja alterar a data de expiração:");
                             nomeTarefa = Console.ReadLine();
@@ -101,11 +120,11 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                             }
                             else
                             {
-                                validation4 = false;
+                                UpdateData_exe.validation5 = false;
                             }
                         }
 
-                        while (validation5)
+                        while (UpdateData_exe.validation6)
                         {
                             Console.WriteLine($"\nInforme a nova data de vencimento da tarefa (DD/MM/YYYY):");
                             string novaDataString = Console.ReadLine();
@@ -120,7 +139,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                             }
                             else
                             {
-                                validation5 = false;
+                                UpdateData_exe.validation6 = false;
                                 aux_up.UpdateData_date(nomeTarefa, novaData);
                             }
                         }
@@ -129,7 +148,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                     case 4:
 
                         string nome_task_pri = "";
-                        while (validation6)
+                        while (UpdateData_exe.validation7)
                         {
                             Console.WriteLine("\nDigite o NOME da task que deseja realizar a alteração da prioridade:");
                             nome_task_pri = Console.ReadLine();
@@ -139,7 +158,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                             }
                             else
                             {
-                                validation6 = false;
+                                UpdateData_exe.validation7 = false;
                             }
                         }
 
@@ -160,7 +179,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                             }
                             else
                             {
-                                Console.WriteLine("\nDado inválido. Insira uma das três prioridades a seguir: (ALTA | MEDIA | BAIXA)");
+                                Console.WriteLine("\nDado inválido.");
                             }
                         }
                         aux_up.UpdateData_pri(nome_task_pri, new_prioridade_task);
@@ -169,7 +188,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
 
                     case 5:
                         string nome_task_stts = "";
-                        while (validation7) {
+                        while (UpdateData_exe.validation8) {
                             Console.WriteLine("\nDigite o NOME da tarefa que deseja realizar a alteração do status:");
                             nome_task_stts = Console.ReadLine();
                             if (string.IsNullOrEmpty(nome_task_stts))
@@ -178,7 +197,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                             }
                             else
                             {
-                                validation7 = false;
+                                UpdateData_exe.validation8 = false;
                             }
                         }
                         bool validacao_stts = true;
@@ -196,14 +215,14 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                             }
                             else
                             {
-                                Console.WriteLine("\nDado inválido. Insira um dos três status a seguir: (Pendente | Finalizada | Cancelada)");
+                                Console.WriteLine("\nDado inválido.");
                             }
                         }
                         aux_up.UpdateData_stts(nome_task_stts, new_status_task);
                         break;
 
                     case 6:
-                        aux = false;
+                        UpdateData_exe.aux_up_exe = false;
                         Console_Main.Main(args);
                         break;
                 }
