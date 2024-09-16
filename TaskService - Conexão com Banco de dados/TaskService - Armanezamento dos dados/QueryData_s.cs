@@ -25,7 +25,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                 Console.WriteLine("\n1. Consultar uma tarefa especifica.");
                 Console.WriteLine("2. Consultar todas as tarefas atuais.");
                 Console.WriteLine("3. Consultar tarefas pendentes.");
-                Console.WriteLine("4. Consultar tarefas concluídas.");
+                Console.WriteLine("4. Consultar tarefas finalizadas.");
                 Console.WriteLine("5. Consultar tarefas expiradas.");
                 Console.WriteLine("6. Consultar tarefas de alta prioridade.");
                 Console.WriteLine("7. Consultar tarefas de média prioridade.");
