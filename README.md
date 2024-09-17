@@ -31,6 +31,7 @@ Oferece diversas opções de consulta:
 - Tarefas pendentes
 - Tarefas finalizadas
 - Tarefas expiradas
+- Tarefas canceladas
 - Tarefas conforme a sua prioridade 
 
 ### 5. Verificação Automática de Expiração
