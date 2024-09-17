@@ -32,7 +32,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                 Console.WriteLine("8. Consultar tarefas de média prioridade.");
                 Console.WriteLine("9. Consultar tarefas de baixa prioridade.");
                 Console.WriteLine("10. Voltar ao menu principal.");
-                if ((!int.TryParse(Console.ReadLine(), out op) || (op < 1 || op > 9)))
+                if ((!int.TryParse(Console.ReadLine(), out op) || (op < 1 || op > 10)))
                 {
                     Console.WriteLine("\nOpção inválida. Digite uma das opções a seguir (1 a 9).");
                 }
@@ -70,19 +70,19 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                         break;
 
                     case 6:
-                        aux_qr.QueryTask_High();
+                        aux_qr.QueryTask_Canceled();
                         break;
 
                     case 7:
-                        aux_qr.QueryTask_Average();
+                        aux_qr.QueryTask_High();
                         break;
 
                     case 8:
-                        aux_qr.QueryTask_Low();
+                       aux_qr.QueryTask_Average();
                         break;
 
                     case 9:
-                        aux_qr.QueryTask_Canceled();
+                         aux_qr.QueryTask_Low();
                         break;
                     case 10:
                         aux_query = false;
