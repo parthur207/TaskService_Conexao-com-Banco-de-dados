@@ -30,6 +30,7 @@ namespace TaskService___Conexão_com_Banco_de_dados.DataBase.Interface
         public void QueryTask_High() { }
         public void QueryTask_Average() { }
         public void QueryTask_Low() { }
+        public void QueryTask_Canceled() { }
 
 
         /*Execução do comando de atualização de dados conforme atributo*/

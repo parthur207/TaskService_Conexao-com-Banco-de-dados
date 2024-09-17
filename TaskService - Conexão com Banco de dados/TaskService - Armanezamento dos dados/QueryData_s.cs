@@ -27,10 +27,11 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                 Console.WriteLine("3. Consultar tarefas pendentes.");
                 Console.WriteLine("4. Consultar tarefas finalizadas.");
                 Console.WriteLine("5. Consultar tarefas expiradas.");
-                Console.WriteLine("6. Consultar tarefas de alta prioridade.");
-                Console.WriteLine("7. Consultar tarefas de média prioridade.");
-                Console.WriteLine("8. Consultar tarefas de baixa prioridade.");
-                Console.WriteLine("9. Voltar ao menu principal.");
+                Console.WriteLine("6. Consultar tarefas canceladas.");
+                Console.WriteLine("7. Consultar tarefas de alta prioridade.");
+                Console.WriteLine("8. Consultar tarefas de média prioridade.");
+                Console.WriteLine("9. Consultar tarefas de baixa prioridade.");
+                Console.WriteLine("10. Voltar ao menu principal.");
                 if ((!int.TryParse(Console.ReadLine(), out op) || (op < 1 || op > 9)))
                 {
                     Console.WriteLine("\nOpção inválida. Digite uma das opções a seguir (1 a 9).");
@@ -81,9 +82,14 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Armanezamento_
                         break;
 
                     case 9:
+                        aux_qr.QueryTask_Canceled();
+                        break;
+                    case 10:
                         aux_query = false;
                         Console_Main.Main(args);
                         break;
+
+
                 }
                     }
             }

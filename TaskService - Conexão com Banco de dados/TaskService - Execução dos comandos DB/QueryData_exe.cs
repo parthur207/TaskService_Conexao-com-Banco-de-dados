@@ -284,6 +284,42 @@ namespace TaskService___Conexão_com_Banco_de_dados.TaskService___Execução_dos
                 Console.WriteLine();
             }
         }
+        public void QueryTask_Canceled()
+        {
+            string ConnectionString = Connect_db.GetConnectionString();
+            try
+            {
+                using (var conexao = new MySqlConnection(ConnectionString))
+                {
+                    string comando_query_low_string = @"SELECT * FROM All_Task WHERE Status_Task='Cancelada';";
+                    using (var comando_query_Low = new MySqlCommand(comando_query_low_string, conexao))
+                    {
+                        conexao.Open();
+                        using (MySqlDataReader Reader = comando_query_Low.ExecuteReader())
+                        {
+                            if (Reader.HasRows)
+                            {
+                                Console.WriteLine("\nTarefas canceladas:");
+                                while (Reader.Read())
+                                {
+                                    Console.WriteLine($"\nNome da tarefa: {Reader["Nome_Task"]} - Descrição da tarefa: {Reader["Descricao_Task"]} - Data de vencimento: {Reader["Data_Task"]} - Prioridade da tarefa: {Reader["Prioridade_Task"]} - Status da tarefa: {Reader["Status_Task"]}");
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nNenhuma tarefa com status de 'Cancelada' no momento.");
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ocorreu um erro inesperado:\n{ex.Message.ToString()}");
+                Console_Main.Main(args);
+                Console.WriteLine();
+            }
+        }
 
         public void QueryTask_Low()
         {
