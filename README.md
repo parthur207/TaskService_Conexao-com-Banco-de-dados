@@ -22,7 +22,7 @@ Permite alterar atributos de uma tarefa existente, como:
 - Descrição
 - Data de vencimento
 - Prioridade (ALTA, MÉDIA ou BAIXA)
-- Status (Pendente, Finalizada ou Cancelada)
+- Status (Pendente, Finalizada, Expirada ou Cancelada)
 
 ### 4. Consulta de Tarefas
 Oferece diversas opções de consulta:
