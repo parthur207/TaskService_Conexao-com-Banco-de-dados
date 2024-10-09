@@ -51,7 +51,7 @@ O sistema verifica se as tarefas pendentes estão expiradas ao comparar a data a
     git clone https://github.com/seu-repositorio/TaskService_Conexao-com-Banco-de-dados.git
     ```
 
-2. Abra o projeto em sua IDE e configure a string de conexão com o banco de dados MySQL.
+2. Abra o projeto em sua IDE e configure a string de conexão com o banco de dados MySQL (É de necessidade a criação de um banco MySql, conforme o arquivo presente na branch Master 'MySql.txt').
 
 3. Compile e execute o projeto para começar a gerenciar suas tarefas.
 
